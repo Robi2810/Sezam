@@ -1,0 +1,56 @@
+.card {
+    clear: both;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 2px 0px 8px rgba(0,0,0,0.25);
+
+    .img {
+        width: 200px;
+        height: 200px;
+        border-radius: 8px;
+        float: left;
+        overflow: hidden;
+        object-fit: cover;
+    }
+
+    .div {
+        padding: 16px;
+        float: initial;
+    }
+
+
+
+    .card-title {
+        height: 0px;
+        padding-left: 16px;
+        padding-right: 16px;
+        text-align: left;
+        vertical-align: top;
+        font-size: 20pt;
+        color: #002D6E;
+        font-weight: normal;
+        font-family: Inter, sans-serif;
+    }
+
+    .description {
+        align-items: center;
+        padding: 16px;
+        text-align: left;
+        font-size: 10pt;
+        color: #002D6E;
+        font-weight: lighter;
+        font-family: Inter, sans-serif;
+    }
+
+    .persons-container {
+        height: 0px;
+        width: 0px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .total {
+        color: #002D6E;
+    }
+}
+
