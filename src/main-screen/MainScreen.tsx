@@ -8,32 +8,87 @@ import Type from "../detailed-card/Type";
 function MainScreen() {
 
     const [showBlur, setShowBlur] = React.useState(false);
+    const [type, setType] = React.useState(Type.LIST);
 
     return (
         <div>
-            {showBlur? <div className="blur"/>: null}
-            {DetailedCard(Type.LIST)}
+            {showBlur ? <div className="blur"/> : null}
+            {showBlur ? DetailedCard(type, () => setShowBlur(false)) : null}
             <div className="main-screen">
                 <div className="title">Базы данных</div>
                 <div className="container">
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-                    {Card(()=>setShowBlur(true))}
-
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.LIST)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.HSE_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.SHARED_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.LIST)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.HSE_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.SHARED_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.LIST)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.HSE_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.SHARED_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.LIST)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.HSE_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.SHARED_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.LIST)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.HSE_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.SHARED_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.LIST)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.HSE_LOGIN)
+                    })}
+                    {Card(() => {
+                        setShowBlur(true);
+                        setType(Type.SHARED_LOGIN)
+                    })}
 
                 </div>
             </div>
@@ -41,7 +96,6 @@ function MainScreen() {
         </div>
     );
 }
-
 
 
 export default MainScreen;

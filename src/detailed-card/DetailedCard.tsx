@@ -8,9 +8,7 @@ import copy from './copy.svg'
 import Type from "./Type";
 
 
-function Card(type: Type) {
-
-
+function DetailedCard(type: Type, p: () => void) {
     return (
         <div className="detailed-card">
             <table>
@@ -48,7 +46,7 @@ function Card(type: Type) {
                         </div>
                     </td> : ""}
                     <td>
-                        <div className="close">
+                        <div className="close" onClick={p}>
                         Звершить
                         </div>
                     </td>
@@ -220,4 +218,4 @@ function list() {
     </div>
 }
 
-export default Card
+export default DetailedCard
