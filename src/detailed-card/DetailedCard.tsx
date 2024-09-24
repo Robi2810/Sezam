@@ -5,10 +5,10 @@ import document from "./Document.svg";
 import './DetailedCard.css'
 import warning from './warning.svg'
 import copy from './copy.svg'
-import Type from "./Type";
+import Type from "../dto/Type";
+import DetailedInfo from "../dto/DetailedInfo";
 
-
-function DetailedCard(type: Type, p: () => void) {
+function DetailedCard(detailedInfo: DetailedInfo, p: () => void) {
     return (
         <div className="detailed-card">
             <table>
@@ -32,15 +32,15 @@ function DetailedCard(type: Type, p: () => void) {
                 </tr>
             </table>
 
-            { type == Type.LIST ? list() :
-                type == Type.HSE_LOGIN ? hseLogin() :
-                type == Type.SHARED_LOGIN ? sharedLogin() : ""
+            { detailedInfo.type === Type.LIST ? list() :
+                detailedInfo.type === Type.HSE_LOGIN ? hseLogin() :
+                    detailedInfo.type === Type.SHARED_LOGIN ? sharedLogin(detailedInfo) : ""
             }
 
             <table>
                 <tr>
                     <td width="100%"></td>
-                    { type == Type.SHARED_LOGIN ? <td>
+                    { detailedInfo.type === Type.SHARED_LOGIN ? <td>
                         <div className="extend">
                             Продлить
                         </div>
@@ -57,7 +57,7 @@ function DetailedCard(type: Type, p: () => void) {
     )
 }
 
-function sharedLogin() {
+function sharedLogin(detailedInfo: DetailedInfo) {
     return <div>
         <div className="info-title">Метод Аутентификации</div>
         <div className="info-text">Укажите данные для входа на сайте по <a href="https://google.com"
@@ -94,7 +94,10 @@ function sharedLogin() {
                                     <div className="info-text">NewLOGIN</div>
                                 </td>
                                 <td align="center">
-                                    <img src={copy}/>
+                                    <img src={copy} onClick={ e => {
+                                        navigator.clipboard.writeText(detailedInfo.login);
+                                    }
+                                    }/>
                                 </td>
                             </tr>
                         </table>
@@ -115,7 +118,10 @@ function sharedLogin() {
                                 <div className="info-text">●●●●●●●●●●●</div>
                             </td>
                             <td align="center">
-                                <img src={copy}/>
+                                <img src={copy} onClick={ e => {
+                                    navigator.clipboard.writeText(detailedInfo.password);
+                                }
+                                }/>
                             </td>
                         </tr>
                     </table>

@@ -2,15 +2,33 @@ import React from 'react';
 import './App.css';
 import Header from "./header/Header";
 import MainScreen from "./main-screen/MainScreen";
+import {ReactKeycloakProvider} from "@react-keycloak/web";
+import keycloak from "./Keycloak";
+import TokenHolder from "./TokenHolder";
 
-function App() {
-  return (
+const App = () => {
 
-    <div className="App">
-        <Header/>
-        <MainScreen/>
-    </div>
-  );
-}
+
+    // return <ReactKeycloakProvider authClient={keycloak}>
+    //     <div>{keycloak.authenticated}
+    //     </div>
+    // </ReactKeycloakProvider>
+    return (
+        <ReactKeycloakProvider initOptions={{onLoad: 'login-required'}} authClient={keycloak}
+                               LoadingComponent={<div>Loading...</div>}
+                               onTokens={tokens => {
+                                   if (tokens.token !== undefined) {
+                                       TokenHolder.setToken(tokens.token)
+                                   }
+                               }}>
+            <React.StrictMode>
+                <div className="App">
+                    {Header("Alexey", "Danilov")}
+                    <MainScreen/>
+                </div>
+            </React.StrictMode>
+        </ReactKeycloakProvider>
+    );
+};
 
 export default App;
