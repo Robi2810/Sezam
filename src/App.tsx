@@ -8,11 +8,6 @@ import TokenHolder from "./TokenHolder";
 
 const App = () => {
 
-
-    // return <ReactKeycloakProvider authClient={keycloak}>
-    //     <div>{keycloak.authenticated}
-    //     </div>
-    // </ReactKeycloakProvider>
     return (
         <ReactKeycloakProvider initOptions={{onLoad: 'login-required'}} authClient={keycloak}
                                LoadingComponent={<div>Loading...</div>}
