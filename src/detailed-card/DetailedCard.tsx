@@ -8,6 +8,8 @@ import copy from './copy.svg'
 import Type from "../dto/Type";
 import DetailedInfo from "../dto/DetailedInfo";
 import { KnowledgeBase, KnowledgeBaseDataFiles, KnowledgeBaseTypeEnum } from "../models";
+import copyToClipboard from 'copy-to-clipboard';
+import toast, { Toaster } from "react-hot-toast";
 
 function DetailedCard(kb: KnowledgeBase, p: () => void) {
     return (
@@ -33,7 +35,7 @@ function DetailedCard(kb: KnowledgeBase, p: () => void) {
 
             { kb.type === KnowledgeBaseTypeEnum.FILE ? list(kb.data!.files!) :
                 kb.type === KnowledgeBaseTypeEnum.HSE ? hseLogin(kb.redirectUrl!) :
-                    kb.type === KnowledgeBaseTypeEnum.CREDENTIALS ? sharedLogin(new DetailedInfo(kb.data!.credentials!.username,kb.data!.credentials!.password,Type.SHARED_LOGIN, kb.activeSession!.endAt)) : ""}
+                    kb.type === KnowledgeBaseTypeEnum.CREDENTIALS ? sharedLogin(new DetailedInfo(kb.data!.credentials!.username,kb.data!.credentials!.password,Type.SHARED_LOGIN, kb.activeSession!.endAt, kb.redirectUrl!)) : ""}
             
 
             <table>
@@ -46,7 +48,7 @@ function DetailedCard(kb: KnowledgeBase, p: () => void) {
                     </td> : ""} */}
                     <td>
                         <div className="close" onClick={p}>
-                        Звершить
+                        Завершить
                         </div>
                     </td>
                 </tr>
@@ -59,7 +61,7 @@ function DetailedCard(kb: KnowledgeBase, p: () => void) {
 function sharedLogin(detailedInfo: DetailedInfo) {
     return <div>
         <div className="info-title">Метод Аутентификации</div>
-        <div className="info-text">Укажите данные для входа на сайте по <a href="https://google.com"
+        <div className="info-text">Укажите данные для входа на сайте по <a href={detailedInfo.redirectUrl}
                                                                            target="_blank">ссылке</a></div>
         <table width="100%">
             <tr>
@@ -94,7 +96,8 @@ function sharedLogin(detailedInfo: DetailedInfo) {
                                 </td>
                                 <td align="center">
                                     <img src={copy} onClick={ e => {
-                                        navigator.clipboard.writeText(detailedInfo.login);
+                                        copyToClipboard(detailedInfo.login);
+                                        toast("Логин скопирован в буфер обмена")
                                     }
                                     }/>
                                 </td>
@@ -118,7 +121,8 @@ function sharedLogin(detailedInfo: DetailedInfo) {
                             </td>
                             <td align="center">
                                 <img src={copy} onClick={ e => {
-                                    navigator.clipboard.writeText(detailedInfo.password);
+                                    copyToClipboard(detailedInfo.password);
+                                    toast("Пароль скопирован в буфер обмена")
                                 }
                                 }/>
                             </td>

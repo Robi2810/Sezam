@@ -5,6 +5,7 @@ import MainScreen from "./main-screen/MainScreen";
 import {ReactKeycloakProvider} from "@react-keycloak/web";
 import keycloak from "./Keycloak";
 import TokenHolder from "./TokenHolder";
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
                                }}>
             <React.StrictMode>
                 <div className="App">
+                    <Toaster/>
                     {Header("Alexey", "Danilov")}
                     <MainScreen/>
                 </div>
