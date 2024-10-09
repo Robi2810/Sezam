@@ -10,12 +10,12 @@ function Card(p: () => void, e: ShortKnowledgeBase) {
       <div className="right-block">
         <div className="card-title">{e.name}</div>
         <div className="description">
-          {e.description.length > 103 ? `${e.description.slice(0, 100)}...` : e.description}
+          {e.description.length > 63 ? `${e.description.slice(0, 60)}...` : e.description}
         </div>
         {e.type === ShortKnowledgeBaseTypeEnum.CREDENTIALS && (
           <div className="persons">
             <img src={person} width="16px" height="16px" />
-            <td className="total">{`${e.currentUsers}${e.maxUsers === -1 ? "" : ` / ${e.maxUsers}`}`}</td>
+            <td className="total">{`${e.currentUsers} / ${e.maxUsers === -1 ? "∞" : `${e.maxUsers}`}`}</td>
           </div>
         )}
       </div>

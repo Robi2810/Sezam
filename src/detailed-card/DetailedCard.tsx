@@ -33,7 +33,7 @@ function DetailedCard(kb: KnowledgeBase, p: () => void) {
             <td className="detailed-persons-container">
               <img src={person} />
             </td>
-            <td className="detailed-total">{`${kb.currentUsers}${kb.maxUsers === -1 ? "" : ` / ${kb.maxUsers}`}`}</td>
+            <td className="detailed-total">{`${kb.currentUsers} / ${kb.maxUsers === -1 ? "∞" : `${kb.maxUsers}`}`}</td>
           </tr>
         ) : (
           <></>
