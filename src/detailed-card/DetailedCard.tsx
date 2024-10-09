@@ -17,7 +17,7 @@ function DetailedCard(kb: KnowledgeBase, p: () => void) {
       <table>
         <tr>
           <th rowSpan={3}>
-            <img className="img" src={kb.iconUrl} />
+            <img className="DetailedCard__img" src={kb.iconUrl} />
           </th>
           <td colSpan={2} className="detailed-card-title">
             {kb.name}
@@ -33,7 +33,7 @@ function DetailedCard(kb: KnowledgeBase, p: () => void) {
             <td className="detailed-persons-container">
               <img src={person} />
             </td>
-            <td className="detailed-total">{kb.currentUsers + "/" + kb.maxUsers}</td>
+            <td className="detailed-total">{`${kb.currentUsers}${kb.maxUsers === -1 ? "" : ` / ${kb.maxUsers}`}`}</td>
           </tr>
         ) : (
           <></>
@@ -166,8 +166,12 @@ function sharedLogin(detailedInfo: DetailedInfo) {
 function hseLogin(redirectUrl: string, instruction: string) {
   return (
     <div>
-      <div className="info-title">Метод Аутентификации</div>
-      <div className="info-text">{instruction}</div>
+      {Boolean(instruction) && (
+        <>
+          <div className="info-title">Метод Аутентификации</div>
+          <div className="info-text">{instruction}</div>
+        </>
+      )}
       <a href={redirectUrl} target="_blank">
         Перейти в сервис
       </a>
